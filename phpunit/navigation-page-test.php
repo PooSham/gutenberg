@@ -80,10 +80,7 @@ class WP_Navigation_Page_Test extends WP_UnitTestCase {
 		$scripts->remove( $handle );
 		$scripts->add( $handle, 'https://test.test/test.js' );
 		$response = new WP_REST_Response( array( 'someData' ) );
-		$this->callback
-			->expects( $this->once() )
-			->method( 'preload_menus_rest_pre_dispatch_callback' )
-			->willReturn( $response );
+
 
 		gutenberg_navigation_editor_preload_menus();
 
@@ -97,7 +94,10 @@ class WP_Navigation_Page_Test extends WP_UnitTestCase {
 
 /**
  * This is a utility test class for creating mocks of the callback functions
- */
+ */$this->callback
+	->expects( $this->once() )
+	->method( 'preload_menus_rest_pre_dispatch_callback' )
+	->willReturn( $response );
 class WP_Navigation_Page_Test_Callback {
 
 	public function preload_paths_callback() {}
